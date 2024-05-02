@@ -10,14 +10,24 @@ contract Pacific is ERC721URIStorage {
 
     constructor() ERC721("Pacify", "Pacific") {}
 
-    function mintCert(address recipient, string memory tokenURI)
-        public
-        returns (uint256)
-    {
+    //This function is for minting the certificate as an NFT
+    function mintCert(
+        address recipient,
+        string memory tokenURI
+    ) public returns (uint256) {
         uint256 tokenId = _nextTokenId++;
         _mint(recipient, tokenId);
         _setTokenURI(tokenId, tokenURI);
 
         return tokenId;
+    }
+
+    //This function is fo transferring the certificate to another address
+    function transferCert(address from, address to, uint256 tokenId) public {
+        safeTransferFrom(from, to, tokenId);
+    }
+
+    function searchCert(uint256 tokenId) public view returns (string memory) {
+        return tokenURI(tokenId);
     }
 }
