@@ -1,2 +1,2 @@
 # pacify-eth
-Pacify but using etherium.
+A decentralized academic certificate verification Dapp
